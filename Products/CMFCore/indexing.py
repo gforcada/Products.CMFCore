@@ -15,6 +15,16 @@ from zope.proxy import non_overridable
 from zope.proxy import ProxyBase
 from zope.publisher.interfaces.browser import IBrowserRequest
 
+import os
+
+
+CATALOG_OPTIMIZATION_DISABLED = os.environ.get(
+    'CATALOG_OPTIMIZATION_DISABLED',
+    'false'
+)
+CATALOG_OPTIMIZATION_DISABLED = CATALOG_OPTIMIZATION_DISABLED.lower() in \
+    ('true', 't', 'yes', 'y', '1')
+
 
 # constants for indexing operations
 UNINDEX = -1

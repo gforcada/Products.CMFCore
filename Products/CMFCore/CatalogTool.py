@@ -29,6 +29,7 @@ from zope.interface.declarations import getObjectSpecification
 from zope.interface.declarations import ObjectSpecification
 from zope.interface.declarations import ObjectSpecificationDescriptor
 
+from Products.CMFCore.indexing import CATALOG_OPTIMIZATION_DISABLED
 from Products.CMFCore.indexing import filterTemporaryItems
 from Products.CMFCore.indexing import getQueue
 from Products.CMFCore.indexing import processQueue
@@ -46,16 +47,6 @@ from Products.CMFCore.utils import _getAuthenticatedUser
 from Products.CMFCore.utils import _mergedLocalRoles
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.utils import UniqueObject
-
-import os
-
-
-CATALOG_OPTIMIZATION_DISABLED = os.environ.get(
-    'CATALOG_OPTIMIZATION_DISABLED',
-    'false'
-)
-CATALOG_OPTIMIZATION_DISABLED = CATALOG_OPTIMIZATION_DISABLED.lower() in \
-    ('true', 't', 'yes', 'y', '1')
 
 
 class IndexableObjectSpecification(ObjectSpecificationDescriptor):
