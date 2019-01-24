@@ -9,6 +9,9 @@ Bug fixes:
 - Fix notifyModified called on a wrong object. PR #44
   [mamico]
 
+- Fix reindexObjectSecurity to also work with the catalog optimization.
+  [gforcada]
+
 2.2.12 (2017-05-05)
 -------------------
 
