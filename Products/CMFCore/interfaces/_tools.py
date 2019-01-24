@@ -295,7 +295,7 @@ class ICachingPolicy(Interface):
     def getPostCheck():
         """
         """
-    
+
     def testPredicate(expr_context):
         """Does this request match our predicate?
         """
@@ -920,7 +920,7 @@ class IMetadataTool(Interface):
     #
     def getFullName(userid):
         """ Convert an internal userid to a "formal" name.
-        
+
         o Convert only if possible, perhaps using the 'portal_membership'
           tool;  otherwise, return 'userid'.
 
@@ -981,7 +981,7 @@ class IMetadataTool(Interface):
                              , content_type=None
                              ):
         """ List allowed values for a given schema element and content object.
-        
+
         o List possible keywords if both 'content' and 'content_type' are None.
         """
 
@@ -1011,15 +1011,15 @@ class IMetadataTool(Interface):
     #
     def setInitialMetadata(content):
         """ Set initial values for content metatdata.
-        
+
         o Supply any site-specific defaults.
         """
 
     def validateMetadata(content):
         """ Enforce portal-wide policies about metadata.
-        
+
         o E.g., policies may require non-empty title/description, etc.
-        
+
         o This method may be called by view / workflow code at "appropriate"
           times, such as immediately before saving changes to the metadata of
           an object.
@@ -1274,7 +1274,7 @@ class ISyndicationTool(Interface):
     def disableSyndication(obj):
         """ Disable syndication for the passed-in object
 
-        o raises 'This object does not have Syndication Information' if 
+        o raises 'This object does not have Syndication Information' if
           syndication has already been disabled
         """
 
@@ -1332,7 +1332,7 @@ class ISyndicationTool(Interface):
         o raises 'Syndication is not Allowed' if the site-wide policy
           does not allow syndication
         """
-        
+
     def getMaxItems(obj=None):
         """ Return the number of items published at any one time in the feed
 
@@ -1998,7 +1998,7 @@ class IWorkflowDefinition(Interface):
 
 
 class ILinebreakNormalizer(Interface):
-    
+
     """ Interface for a utility to normalize line breaks in plain text
 
     Implementations of this utility may adjust line breaks to conform to
