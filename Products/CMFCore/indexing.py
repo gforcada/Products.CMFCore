@@ -61,6 +61,11 @@ class PortalCatalogProcessor(object):
         if catalog is not None:
             catalog._unindexObject(obj)
 
+    def reindexObjectSecurity(self, obj, skip_self=False):
+        catalog = getToolByName(obj, 'portal_catalog', None)
+        if catalog is not None:
+            catalog._reindexObjectSecurity(obj, skip_self=skip_self)
+
     def begin(self):
         pass
 

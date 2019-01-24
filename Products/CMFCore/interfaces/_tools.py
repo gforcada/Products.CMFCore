@@ -2041,6 +2041,9 @@ class IIndexing(Interface):
     def unindex(obj):
         """ queue an unindex operation for the given object """
 
+    def reindexObjectSecurity(obj, skip_self=False):
+        """ queue an object security operation for the given object """
+
 
 class IIndexQueue(IIndexing):
     """ a queue for storing and optimizing indexing operations """

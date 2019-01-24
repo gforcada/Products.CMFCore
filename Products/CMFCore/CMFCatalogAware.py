@@ -28,6 +28,9 @@ from zope.interface import implements
 from zope.lifecycleevent.interfaces import IObjectCopiedEvent
 from zope.lifecycleevent.interfaces import IObjectCreatedEvent
 
+from Products.CMFCore.indexing import CATALOG_OPTIMIZATION_DISABLED
+from Products.CMFCore.indexing import filterTemporaryItems
+from Products.CMFCore.indexing import getQueue
 from Products.CMFCore.interfaces import ICallableOpaqueItem
 from Products.CMFCore.interfaces import ICatalogAware
 from Products.CMFCore.interfaces import IOpaqueItemManager
@@ -91,6 +94,15 @@ class CatalogAware(Base):
 
     security.declareProtected(ModifyPortalContent, 'reindexObjectSecurity')
     def reindexObjectSecurity(self, skip_self=False):
+        if not CATALOG_OPTIMIZATION_DISABLED:
+            obj = filterTemporaryItems(object)
+            if obj is not None:
+                indexer = getQueue()
+                indexer.reindexObjectSecurity(obj, skip_self=skip_self)
+        else:
+            self._reindexObjectSecurity(skip_self=skip_self)
+
+    def _reindexObjectSecurity(self, skip_self=False):
         """ Reindex security-related indexes on the object.
         """
         catalog = self._getCatalogTool()
